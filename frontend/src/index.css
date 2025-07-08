@@ -1,0 +1,103 @@
+
+/* Tailwind Layers: MUST be in this order */
+@import 'tailwindcss';
+
+/* === Base Layer for Resets and Variables === */
+@layer base {
+  :root {
+    --radius: 0.625rem;
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+
+    /* Brand Colors */
+    --color-hotel-gold: #C3A165;
+    --color-hotel-gold-light: #D4B87A;
+    --color-hotel-gold-dark: #B29050;
+
+    --color-hotel-navy: #1E3A8A;
+    --color-hotel-navy-light: #3B82F6;
+    --color-hotel-navy-dark: #1E40AF;
+
+    --color-hotel-cream: #FEF7ED;
+    --color-hotel-cream-light: #FFF7ED;
+    --color-hotel-cream-dark: #FDBA74;
+
+    --color-hotel-brown: #92400E;
+    --color-hotel-brown-light: #D97706;
+    --color-hotel-brown-dark: #78350F;
+
+    --color-hotel-success: #10B981;
+    --color-hotel-success-light: #34D399;
+    --color-hotel-success-dark: #059669;
+
+    --color-hotel-warning: #F59E0B;
+    --color-hotel-warning-light: #FBBF24;
+    --color-hotel-warning-dark: #D97706;
+
+    --color-hotel-error: #EF4444;
+    --color-hotel-error-light: #F87171;
+    --color-hotel-error-dark: #DC2626;
+
+    --color-hotel-gray: #6B7280;
+    --color-hotel-gray-light: #9CA3AF;
+    --color-hotel-gray-dark: #4B5563;
+
+    --color-hotel-white: #FFFFFF;
+    --color-hotel-black: #000000;
+    --color-hotel-off-white: #F9FAFB;
+
+    --color-hotel-accent-1: #8B5CF6;
+    --color-hotel-accent-2: #06B6D4;
+    --color-hotel-accent-3: #EF4444;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--color-hotel-white);
+    color: var(--color-hotel-gray-dark);
+  }
+}
+
+/* === Utilities Layer for Custom Utility Classes === */
+@layer utilities {
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-heading {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .font-body,
+  .font-button,
+  .font-card-body {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .font-card-title {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .font-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+  }
+
+  .hotel-gradient {
+    background: linear-gradient(135deg, var(--color-hotel-gold), var(--color-hotel-gold-dark));
+  }
+
+  .hotel-shadow {
+    box-shadow:
+      0 10px 25px -5px rgba(195, 161, 101, 0.1),
+      0 10px 10px -5px rgba(195, 161, 101, 0.04);
+  }
+
+  .hotel-text-shadow {
+    text-shadow: 0 2px 4px rgba(195, 161, 101, 0.1);
+  }
+}
