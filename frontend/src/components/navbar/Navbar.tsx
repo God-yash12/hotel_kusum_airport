@@ -61,10 +61,10 @@ const Navbar = () => {
 
   return (
     <nav className={`w-full fixed top-0 z-50 transition-all duration-500 ${scrolled
-      ? 'bg-gray-300 backdrop-blur-lg shadow-lg border-b border-[#B0905B]/20'
-      : 'bg-gradient-to-b from-black/30 to-transparent'
+      ? 'backdrop-blur-lg bg-gray-100/95 border-b border-gray-200/20'
+      : 'bg-transparent backdrop-blur-none'
       }`}>
-      <div className={`mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center transition-all duration-500 ${scrolled ? 'max-w-7xl' : 'w-full'}`}>
+      <div className={`mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center transition-all duration-500 ${scrolled ? 'max-w-[var(--max-width-9xl)]' : 'w-full'}`}>
 
         {/* Logo - Will move left when scrolled */}
         <div className={`transition-all duration-500 ${scrolled ? 'translate-x-0' : 'translate-x-[-20px]'}`}>
@@ -106,12 +106,12 @@ const Navbar = () => {
               onClick={() => setDropdownOpen(!dropdownOpen)}
               onMouseEnter={() => setDropdownOpen(true)}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xl font-medium transition-all duration-300 ${location.pathname.includes('/rooms')
-                  ? scrolled
-                    ? 'text-[#C3A165] bg-[#C3A165]/10'
-                    : 'text-[#C3A165] bg-white/10'
-                  : scrolled
-                    ? 'text-gray-700 hover:text-[#C3A165] hover:bg-[#C3A165]/5'
-                    : 'text-white hover:text-[#C3A165] hover:bg-white/10'
+                ? scrolled
+                  ? 'text-[#C3A165] bg-[#C3A165]/10'
+                  : 'text-[#C3A165] bg-white/10'
+                : scrolled
+                  ? 'text-gray-700 hover:text-[#C3A165] hover:bg-[#C3A165]/5'
+                  : 'text-white hover:text-[#C3A165] hover:bg-white/10'
                 }`}
             >
               Rooms & Suites
@@ -120,7 +120,7 @@ const Navbar = () => {
 
             {/* Dropdown Content */}
             {dropdownOpen && (
-              <div 
+              <div
                 className="absolute left-0 top-full mt-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden z-[9999]"
                 onMouseLeave={() => setDropdownOpen(false)}
               >

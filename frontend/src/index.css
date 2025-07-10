@@ -51,6 +51,10 @@
     --color-hotel-accent-1: #8B5CF6;
     --color-hotel-accent-2: #06B6D4;
     --color-hotel-accent-3: #EF4444;
+
+    /* width of components */
+     --max-width-9xl: 96rem;
+  --max-width-10xl: 112rem;
   }
 
   body {

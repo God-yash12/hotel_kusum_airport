@@ -11,7 +11,6 @@ import carousel2 from "@/assets/carousel2.png";
 import carousel3 from "@/assets/carousel3.jpg"; 
 import carousel4 from "@/assets/carousel4.png";
 import carousel5 from "@/assets/carousel5.png";
-import About from "./About";
 
 export default function Home() {
   const slides = [
@@ -55,11 +54,11 @@ export default function Home() {
           align: "start",
           loop: true
         }}
-        className="h-[90vh] w-full"
+        className="h-full lg:h-[90vh] w-full"
       >
-        <CarouselContent className="h-full">
+        <CarouselContent className="h-full lg:force:h-[90vh]">
           {slides.map((slide, index) => (
-            <CarouselItem key={index} className="h-full w-full pl-0">
+            <CarouselItem key={index} className="w-full pl-0">
               <div className="relative h-full lg:h-[90vh] w-full">
                 <img 
                   src={slide.image} 
@@ -83,9 +82,7 @@ export default function Home() {
         <CarouselPrevious className="left-4 z-20 text-white hidden md:flex" />
         <CarouselNext className="right-4 z-20 text-white hidden md:flex" />
       </Carousel>
-      <div>
-        <About />
-      </div>
+      
     </div>
   )
 }

@@ -1,73 +1,99 @@
-import React from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-const About: React.FC = () => {
+import styled from 'styled-components';
+import Image1 from '@/assets/carousel1.jpg';
+import Image2 from '@/assets/carousel2.png';
+import Image3 from '@/assets/footer.png';
+
+
+
+const StyledWrapper = styled.div`
+  .txt {
+    position: relative;
+    font-family: sans-serif;
+    font-size: 2em;
+    letter-spacing: 4px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #fff 10%, #4d4d4d 20%);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animate 3s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+  }
+
+  @keyframes animate {
+    0% {
+      background-position: -500%;
+    }
+    100% {
+      background-position: 500%;
+    }
+  }`;
+
+export const AboutUs = () => {
+    const aboutUsRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        if (aboutUsRef.current) {
+            observer.observe(aboutUsRef.current);
+        }
+
+        return () => {
+            if (aboutUsRef.current) {
+                observer.unobserve(aboutUsRef.current);
+            }
+        };
+    }, []);
+
     return (
-        <div className="about-page">
-            <div className="container mx-auto px-4 py-8">
-                <div className="max-w-4xl mx-auto">
-                    <h1 className="text-4xl font-bold text-center mb-8">About Our Hotel</h1>
-                    
-                    <div className="grid md:grid-cols-2 gap-8 mb-12">
-                        <div>
-                            <img 
-                                src="/api/placeholder/600/400" 
-                                alt="Hotel exterior"
-                                className="w-full h-64 object-cover rounded-lg shadow-lg"
-                            />
-                        </div>
-                        <div className="flex flex-col justify-center">
-                            <h2 className="text-2xl font-semibold mb-4">Welcome to Grand Palace Hotel</h2>
-                            <p className="text-gray-600 mb-4">
-                                Established in 1985, Grand Palace Hotel has been providing exceptional 
-                                hospitality services for over three decades. Located in the heart of the city, 
-                                we offer luxurious accommodations with modern amenities.
-                            </p>
-                            <p className="text-gray-600">
-                                Our commitment to excellence ensures every guest enjoys a memorable stay 
-                                with personalized service and attention to detail.
-                            </p>
-                        </div>
+        <div ref={aboutUsRef} className='mx-auto max-w-[var(--max-width-9xl)] mb-10'>
+            <div className="grid grid-cols-1 lg:grid-cols-6 gap-6 p-6 lg:p-8">
+                {/* Text section - with transition classes */}
+                <div className={`lg:col-span-2 space-y-4 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    }`}>
+                    <StyledWrapper>
+                        <p className='txt text-2xl text-semibold mt-0 lg:mt-2'>About us</p>
+                    </StyledWrapper>
+                    <div className='h-1 bg-amber-600 w-40 mt-1 transition-all duration-1000 delay-300'></div>
+
+                    <p className={`text-md leading-9 mt-0 lg:mt-5 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                        }`}>
+                        At <span className='text-md uppercase text-amber-600'>Kusum Airport Hotel</span>, we redefine your airport stay. More than just a place to rest, our hotel is a destination. Whether you're a traveler needing comfort, a business professional seeking convenience, or a tourist exploring the city, we offer everything to make your stay exceptional.
+
+                        <br /><br />
+
+                        From transit stays to business trips, <span className='text-md uppercase text-amber-600'>Kusum Airport Hotel</span> is your home away from home. With a wide range of services and a dedicated team, we ensure your experience is truly memorable. Book your stay now and elevate your journey with us.
+                    </p>
+
+                </div>
+
+                {/* Image section - with staggered animations */}
+                <div className='lg:col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                    {/* Main image */}
+                    <div className={`md:col-span-2 lg:col-span-2 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                        }`}>
+                        <img src={Image1} alt="Hotel Kusum" className='w-full h-full object-cover rounded-lg shadow-lg' />
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-6 mb-12">
-                        <div className="text-center">
-                            <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <span className="text-blue-600 text-2xl">🏨</span>
-                            </div>
-                            <h3 className="text-xl font-semibold mb-2">Premium Rooms</h3>
-                            <p className="text-gray-600">150 elegantly designed rooms and suites with modern amenities</p>
-                        </div>
-                        <div className="text-center">
-                            <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <span className="text-blue-600 text-2xl">🍽️</span>
-                            </div>
-                            <h3 className="text-xl font-semibold mb-2">Fine Dining</h3>
-                            <p className="text-gray-600">Award-winning restaurants serving international cuisine</p>
-                        </div>
-                        <div className="text-center">
-                            <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <span className="text-blue-600 text-2xl">🏊</span>
-                            </div>
-                            <h3 className="text-xl font-semibold mb-2">Recreation</h3>
-                            <p className="text-gray-600">Swimming pool, spa, fitness center, and conference facilities</p>
-                        </div>
-                    </div>
-
-                    <div className="bg-gray-50 p-6 rounded-lg">
-                        <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
-                        <p className="text-gray-700 mb-4">
-                            To provide an exceptional hospitality experience that exceeds guest expectations 
-                            through personalized service, luxurious amenities, and attention to detail.
-                        </p>
-                        <p className="text-gray-700">
-                            We strive to create lasting memories for our guests while maintaining the highest 
-                            standards of quality and service in the hospitality industry.
-                        </p>
+                    {/* Smaller images */}
+                    <div className={`flex flex-col space-y-4 md:col-span-2 lg:col-span-1 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                        }`}>
+                        <img src={Image2} alt="Hotel Kusum" className='w-full h-64 object-cover rounded-lg shadow-lg transition-all duration-1000 delay-600' />
+                        <img src={Image3} alt="Hotel Kusum" className='w-full h-64 object-cover rounded-lg shadow-lg transition-all duration-1000 delay-700' />
                     </div>
                 </div>
             </div>
         </div>
-    );
-};
-
-export default About;
+    )
+}
