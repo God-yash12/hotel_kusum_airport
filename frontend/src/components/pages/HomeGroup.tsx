@@ -1,5 +1,7 @@
 import  BookingComponent  from "../booking/BookingComponent"
 import {Rooms}  from "../rooms/Rooms"
+import { Services } from "../services/Services"
+import { Testimonials } from "../testimonials/Testimonial"
 import { AboutUs } from "./About"
 import Home from "./Home"
 
@@ -11,6 +13,8 @@ export const HomeGroup = () => {
             <BookingComponent />
             <AboutUs />
             <Rooms />
+            <Services />
+            <Testimonials />
         </div>
     )
 }

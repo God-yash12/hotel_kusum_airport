@@ -8,6 +8,8 @@ import RoomBg from '@/assets/room-bg.jpg';
 import UseFadeIn from '@/hooks/UseFadeIn';
 import Room1 from '@/assets/room1.jpg';
 import { CircleArrowRight } from 'lucide-react';
+import Autoplay from 'embla-carousel-autoplay';
+
 
 // Room data interface
 interface Room {
@@ -126,7 +128,13 @@ export const Rooms: React.FC = () => {
                         opts={{
                             align: "start",
                             slidesToScroll: 1,
+                            loop: true,
                         }}
+                        plugins={[
+                            Autoplay({
+                                delay: 2000,
+                            }),
+                        ]}
                     >
                         <CarouselContent className='-ml-1'>
                             {roomsData.map((room) => (
