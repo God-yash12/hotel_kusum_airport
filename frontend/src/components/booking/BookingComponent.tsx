@@ -10,6 +10,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
+import { Link } from 'react-router-dom';
 
 function formatDate(date: Date | undefined): string {
     if (!date) {
@@ -148,16 +149,16 @@ export default function ModernBookingSystem() {
     return (
 
         <div className='shadow-lg rounded-lg bg-white'>
-            <div className='w-full max-w-[var(--max-width-9xl)] mx-auto px-4 sm:px-6 mt-4 lg:mt-4 '>
+            <div className='w-full max-w-6xl mx-auto px-4 sm:px-6 mt-4 lg:mt-4 '>
 
 
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-10 p-6 lg:p-8'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-20 py-4'>
                     <div className='mt-5'>
-                        <h1 className='text-2xl lg:text-3xl font-bold font-display text-gray-900'>Book Online</h1>
+                        <h1 className='text-2xl lg:text-xl font-bold font-display text-gray-900'>Book Online</h1>
                     </div>
 
                     {/* Check-in Date */}
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-1">
                         <Label htmlFor="checkin-date" className="px-1 text-sm font-medium text-gray-700">
                             Check-in Date
                         </Label>
@@ -180,7 +181,7 @@ export default function ModernBookingSystem() {
                                         <span className="sr-only">Select check-in date</span>
                                     </Button>
                                 </PopoverTrigger>
-                                <PopoverContent className="w-auto overflow-hidden p-0 shadow-lg border-amber-200 focus:outline-none" align="start">
+                                <PopoverContent className="w-auto overflow-hidden p-0 shadow-lg  border-amber-200 focus:outline-none" align="start">
                                     <Calendar
                                         mode="single"
                                         selected={checkInDate}
@@ -197,7 +198,7 @@ export default function ModernBookingSystem() {
                     </div>
 
                     {/* Check-out Date */}
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-1">
                         <Label htmlFor="checkout-date" className="px-1 text-sm font-medium text-gray-700">
                             Check-out Date
                         </Label>
@@ -236,7 +237,7 @@ export default function ModernBookingSystem() {
                     </div>
 
                     {/* Guest Selection */}
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-1">
                         <Label htmlFor="guests" className="px-1 text-sm font-medium text-gray-700">
                             Guests
                         </Label>
@@ -346,11 +347,14 @@ export default function ModernBookingSystem() {
                     </div>
 
                     {/* Book Now Button */}
-                    <div className="flex items-end">
-                        <Button className="w-full h-12 bg-[#C3A165] text-white font-medium rounded-lg hover:bg-[#B89A4D] transition-all duration-200 transform hover:scale-[1.02] shadow-lg hover:shadow-xl">
-                            Book Now
-                        </Button>
-                    </div>
+                     <div className={`transition-all duration-500 `}>
+                              <Button
+                                asChild
+                                className={`hidden sm:flex px-5 py-4 font-display font-medium text-white text-md text-center bg-[#C3A165] rounded-sm hover:rounded-4xl transition-all duration-300 hover:shadow-lg transform hover:scale-105 `}
+                              >
+                                <Link to="/booking">Book Now</Link>
+                              </Button>
+                            </div>
                 </div>
             </div>
         </div>

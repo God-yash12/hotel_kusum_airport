@@ -57,8 +57,8 @@ export const AboutUs = () => {
     }, []);
 
     return (
-        <div ref={aboutUsRef} className='mx-auto max-w-[var(--max-width-9xl)] mb-10'>
-            <div className="grid grid-cols-1 lg:grid-cols-6 gap-6 p-6 lg:p-8">
+        <div ref={aboutUsRef} className='mx-auto max-w-6xl mb-10'>
+            <div className="grid grid-cols-1 lg:grid-cols-6 gap-6 p-6">
                 {/* Text section - with transition classes */}
                 <div className={`lg:col-span-2 space-y-4 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}>
@@ -67,11 +67,11 @@ export const AboutUs = () => {
                     </StyledWrapper>
                     <div className='h-1 bg-amber-600 w-40 mt-1 transition-all duration-1000 delay-300'></div>
 
-                    <p className={`text-md leading-9 mt-0 lg:mt-5 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    <p className={`text-md leading-8 mt-0 lg:mt-5 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                         }`}>
                         At <span className='text-md uppercase text-amber-600'>Kusum Airport Hotel</span>, we redefine your airport stay. More than just a place to rest, our hotel is a destination. Whether you're a traveler needing comfort, a business professional seeking convenience, or a tourist exploring the city, we offer everything to make your stay exceptional.
 
-                        <br /><br />
+                        <br />
 
                         From transit stays to business trips, <span className='text-md uppercase text-amber-600'>Kusum Airport Hotel</span> is your home away from home. With a wide range of services and a dedicated team, we ensure your experience is truly memorable. Book your stay now and elevate your journey with us.
                     </p>

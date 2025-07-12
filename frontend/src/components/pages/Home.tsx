@@ -42,7 +42,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="h-[80vh] w-full relative sm:mt-20px lg:force:mt-0">
+    <div className="h-[80vh] w-full relative lg:force:mt-0">
       <Carousel 
         plugins={[
           Autoplay({

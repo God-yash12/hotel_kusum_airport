@@ -62,9 +62,9 @@ const Navbar = () => {
   return (
     <nav className={`w-full fixed top-0 z-50 transition-all duration-500 ${scrolled
       ? 'backdrop-blur-lg bg-gray-100/95 border-b border-gray-200/20'
-      : 'bg-transparent backdrop-blur-none'
+      : 'bg-transparent backdrop-blur-none ))'
       }`}>
-      <div className={`mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center transition-all duration-500 ${scrolled ? 'max-w-[var(--max-width-9xl)]' : 'w-full'}`}>
+      <div className={`mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center transition-all duration-500 ${scrolled ? 'max-w-6xl' : 'w-full'}`}>
 
         {/* Logo - Will move left when scrolled */}
         <div className={`transition-all duration-500 ${scrolled ? 'translate-x-0' : 'translate-x-[-20px]'}`}>
@@ -72,9 +72,9 @@ const Navbar = () => {
             <img
               src={Logo}
               alt="Hotel Kusum"
-              className="h-16 w-auto object-contain rounded-lg transition-transform group-hover:scale-105 shadow-md"
+              className="h-12 w-auto object-contain rounded-lg transition-transform group-hover:scale-105 shadow-md"
             />
-            <span className={`ml-3 text-xl font-display font-bold font-display transition-colors duration-300 ${scrolled ? 'text-[#C3A165] hidden' : 'text-white '
+            <span className={`ml-3 text-md font-display font-bold font-display transition-colors duration-300 ${scrolled ? 'text-[#C3A165] hidden' : 'text-white '
               }`}>
               Hotel Kusum
             </span>
@@ -87,7 +87,7 @@ const Navbar = () => {
             <Link
               key={item.name}
               to={item.path}
-              className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium text-xl ${location.pathname === item.path
+              className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium text-md ${location.pathname === item.path
                 ? scrolled
                   ? 'text-[#C3A165]'
                   : 'text-[#C3A165]'
@@ -155,11 +155,11 @@ const Navbar = () => {
         </div>
 
         {/* Book Now Button - Will move right when scrolled */}
-        <div className={`transition-all duration-500 ${scrolled ? 'translate-x-0' : 'translate-x-[20px]'}`}>
+        <div className={`transition-all duration-500 ${scrolled ? 'translate-x-0 ' : 'translate-x-[20px]'}`}>
           <Button
             asChild
-            className={`hidden sm:flex px-9 py-7 font-display font-medium text-white text-xl bg-[#C3A165] rounded-lg transition-all duration-300 hover:shadow-lg transform hover:scale-105 ${scrolled
-              ? 'bg-[#C3A165] hover:bg-[#B0905B]'
+            className={`hidden sm:flex px-5 py-4 font-display font-medium text-white text-md text-center bg-[#C3A165] rounded-sm hover:rounded-4xl transition-all duration-300 hover:shadow-lg transform hover:scale-105 ${scrolled
+              ? 'bg-[#C3A165] hover:bg-[#B0905B] shadow-lg hover:shadow-xl'
               : 'bg-[#C3A165]/90 hover:bg-[#C3A165]'
               }`}
           >
@@ -171,7 +171,7 @@ const Navbar = () => {
         <div className="flex items-center gap-3 lg:hidden">
           <Button
             asChild
-            className={`sm:hidden px-6 py-5 font-display font-medium text-white text-lg bg-[#C3A165] rounded-lg transition-all duration-300 hover:shadow-lg ${scrolled
+            className={`sm:hidden px-4 py-2 font-display font-medium text-white text-md bg-[#C3A165] rounded-lg transition-all duration-300 hover:shadow-lg ${scrolled
               ? 'bg-[#C3A165] hover:bg-[#B0905B]'
               : 'bg-[#C3A165]/90 hover:bg-[#C3A165]'
               }`}

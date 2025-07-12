@@ -1,5 +1,5 @@
 import  BookingComponent  from "../booking/BookingComponent"
-import Rooms  from "../rooms/Rooms"
+import {Rooms}  from "../rooms/Rooms"
 import { AboutUs } from "./About"
 import Home from "./Home"
 
