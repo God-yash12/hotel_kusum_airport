@@ -146,7 +146,7 @@ export const ContactForm = () => {
                     <FormControl>
                       <Input placeholder="your@email.com" {...field} className="focus-visible:ring-0 focus-visible:ring-offset-0" />
                     </FormControl>
-                    <FormMessage />
+          <FormMessage />
                   </FormItem>
                 )}
               />
@@ -158,7 +158,7 @@ export const ContactForm = () => {
                   <FormItem>
                     <FormLabel>Phone Number</FormLabel>
                     <FormControl>
-                      <Input placeholder="+9 9834235422" {...field} className="focus-visible:ring-0 focus-visible:ring-offset-0" />
+                      <Input placeholder="+977 9834235422" {...field} className="focus-visible:ring-0 focus-visible:ring-offset-0" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
