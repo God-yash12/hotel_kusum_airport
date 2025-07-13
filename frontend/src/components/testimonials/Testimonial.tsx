@@ -136,7 +136,11 @@ export const Testimonials: React.FC = () => {
                                             {/* Author */}
                                             <div className='mt-auto pt-4 border-t border-gray-100'>
                                                 <h3 className='font-semibold text-gray-900 font-display'>{testimonial.name}  </h3>
-                                                <p>Via <Link to={testimonial.link} className='text-xs text-amber-500 italic'>{testimonial.media}</Link></p>
+                                                <p>Via {testimonial.link ? (
+                                                    <Link to={testimonial.link} className='text-xs text-amber-500 italic'>{testimonial.media}</Link>
+                                                ) : (
+                                                    <span className='text-xs text-amber-500 italic'>{testimonial.media}</span>
+                                                )}</p>
                                             </div>
                                         </CardContent>
                                     </Card>
