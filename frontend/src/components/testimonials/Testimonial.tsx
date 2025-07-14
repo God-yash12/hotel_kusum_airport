@@ -142,7 +142,7 @@ export const Testimonials: React.FC = () => {
                                                     <span className='text-xs text-amber-500 italic'>{testimonial.media}</span>
                                                 )}</p>
                                             </div>
-                                        </CardContent>
+                                                    </CardContent>
                                     </Card>
                                 </CarouselItem>
                             ))}
