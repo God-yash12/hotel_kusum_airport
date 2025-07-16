@@ -5,6 +5,9 @@ import { Menu, ChevronDown } from "lucide-react"
 import Logo from "../../assets/hotel_logo.jpg"
 import { useEffect, useState, useRef } from "react"
 
+import { getAllRooms } from "@/utils/roomUtils"
+
+
 const Navbar = () => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
@@ -12,6 +15,8 @@ const Navbar = () => {
   const [mobileRoomsOpen, setMobileRoomsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const rooms = getAllRooms();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -131,20 +136,18 @@ const Navbar = () => {
                     <p className="text-xs text-gray-500 mt-1">Choose from our premium room collection</p>
                   </div>
                   <div className="grid gap-1">
-                    {roomTypes.map((room) => (
+                    {rooms.map((room) => (
                       <Link
-                        key={room.path}
-                        to={room.path}
+                        key={room.id}
+                        to={`/rooms/${room.slug}`}
                         onClick={handleDropdownItemClick}
-                        className={`block py-3 px-3 rounded-lg transition-all duration-300 group ${location.pathname === room.path
+                        className={`block py-3 px-3 rounded-lg transition-all duration-300 group ${location.pathname === room.slug
                           ? 'bg-[#C3A165]/10 text-[#C3A165]'
                           : 'hover:bg-[#C3A165]/5 text-gray-700 hover:text-[#C3A165]'
                           }`}
                       >
                         <div className="font-medium text-sm">{room.name}</div>
-                        <div className="text-xs text-gray-500 mt-1 group-hover:text-[#C3A165]/70">
-                          {room.description}
-                        </div>
+                       
                       </Link>
                     ))}
                   </div>
