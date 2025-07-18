@@ -110,7 +110,7 @@ const Navbar = () => {
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
               onMouseEnter={() => setDropdownOpen(true)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xl font-medium transition-all duration-300 ${location.pathname.includes('/rooms')
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${location.pathname.includes('/rooms')
                 ? scrolled
                   ? 'text-[#C3A165] bg-[#C3A165]/10'
                   : 'text-[#C3A165] bg-white/10'

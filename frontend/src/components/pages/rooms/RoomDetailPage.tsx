@@ -1,17 +1,17 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import  {getRoomBySlug} from '@/utils/roomUtils';
-import { Carousel } from '@/components/ui/carousel';
+import { getRoomBySlug } from '@/utils/roomUtils';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { RoomFeatures } from './RoomFeatures';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowLeft, Users, Maximize, Bed, Calendar } from 'lucide-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 export const RoomDetailPage: React.FC = () => {
   const { roomSlug } = useParams<{ roomSlug: string }>();
   const navigate = useNavigate();
-  
+
   const room = roomSlug ? getRoomBySlug(roomSlug) : null;
 
   if (!room) {
@@ -34,42 +34,72 @@ export const RoomDetailPage: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <Button 
-          variant="ghost" 
-          onClick={() => navigate('/rooms')}
-          className="flex items-center gap-2"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to Rooms
-        </Button>
-        
-        <Badge variant="secondary" className="text-lg px-4 py-2">
-          ${room.price}/night
-        </Badge>
-      </div>
-
+    <div className="container mx-auto max-w-6xl px-4 py-8">
+      
       {/* Room Title */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold mb-2">{room.name}</h1>
+        <h1 className="text-4xl font-bold mb-2 font-display ">{room.name}</h1>
         <p className="text-lg text-muted-foreground">{room.shortDescription}</p>
       </div>
 
       {/* Image Carousel */}
-      <div className="mb-8">
-        <Carousel>
-          {room.images.map((image, index) => (
-            <img 
-              key={index} 
-              src={image} 
-              alt={`${room.name} - Image ${index + 1}`}
-              className="w-full h-64 object-cover rounded-lg"
+     {/* Image Carousel */}
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+  {/* Left side - Carousel */}
+  <Carousel
+    plugins={[
+      Autoplay({
+        delay: 5000,
+        stopOnInteraction: false,
+      })
+    ]}
+    opts={{
+      align: "start",
+      loop: true
+    }}
+    className="h-full w-full"
+  >
+    <CarouselContent>
+      {room.images.map((image, index) => (
+        <CarouselItem key={index}>
+          <div className="relative h-[620px] w-full">
+            <img
+              src={image}
+              alt={`${room.name} image ${index + 1}`}
+              className="w-full h-full object-cover rounded-lg"
             />
-          ))}
-        </Carousel>
-      </div>
+          </div>
+        </CarouselItem>
+      ))}
+    </CarouselContent>
+    <CarouselPrevious />
+    <CarouselNext />
+  </Carousel>
+
+  {/* Right side - 2x2 Grid */}
+  <div className="hidden lg:grid grid-cols-2 gap-4 h-[620px]">
+    <img 
+      src={room.images[0]} 
+      alt={`${room.name} image 1`} 
+      className="w-full h-[300px] object-cover rounded-lg" 
+    />
+    <img 
+      src={room.images[1]} 
+      alt={`${room.name} image 2`} 
+      className="w-full h-[300px] object-cover rounded-lg" 
+    />
+    <img 
+      src={room.images[2]} 
+      alt={`${room.name} image 3`} 
+      className="w-full h-[300px] object-cover rounded-lg" 
+    />
+    <img 
+      src={room.images[3]} 
+      alt={`${room.name} image 4`} 
+      className="w-full h-[300px] object-cover rounded-lg" 
+    />
+  </div>
+</div>
 
       {/* Room Info Cards */}
       <div className="grid md:grid-cols-4 gap-4 mb-8">
@@ -82,7 +112,7 @@ export const RoomDetailPage: React.FC = () => {
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardContent className="flex items-center gap-3 p-4">
             <Maximize className="h-8 w-8 text-primary" />
@@ -92,7 +122,7 @@ export const RoomDetailPage: React.FC = () => {
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardContent className="flex items-center gap-3 p-4">
             <Bed className="h-8 w-8 text-primary" />
@@ -102,7 +132,7 @@ export const RoomDetailPage: React.FC = () => {
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardContent className="flex items-center gap-3 p-4">
             <Calendar className="h-8 w-8 text-primary" />

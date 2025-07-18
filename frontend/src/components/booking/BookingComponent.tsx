@@ -350,9 +350,9 @@ export default function ModernBookingSystem() {
                      <div className={`transition-all duration-500 mt-3 `}>
                               <Button
                                 asChild
-                                className={`sm:flex px-5 py-4 font-display font-medium text-white text-md text-center bg-[#C3A165] rounded-sm hover:rounded-4xl transition-all duration-300 hover:shadow-lg transform hover:scale-105 `}
+                                className={`sm:flex px-5 py-5  font-display font-medium text-white text-md text-center bg-[#C3A165] rounded-sm hover:rounded-4xl transition-all duration-300 hover:shadow-lg transform hover:scale-105 `}
                               >
-                                <Link to="/booking">Book Now</Link>
+                                <Link to="/booking">Find a Room</Link>
                               </Button>
                             </div>
                 </div>

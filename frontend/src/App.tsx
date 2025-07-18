@@ -3,7 +3,7 @@ import Layout from "./layout/Layout"
 import { HomeGroup } from "./components/pages/HomeGroup"
 import { ContactPage } from "./components/contact/Page"
 import { Facilities } from "./components/facilities/page"
-import { RoomDetailPage } from "./components/pages/rooms/RoomDetailPage"
+import {RoomGroup}  from "./components/pages/rooms/Roomgroup.tsx"
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
             <Route path="/" element={<HomeGroup />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/facilities" element={<Facilities />} />
-            <Route path="/rooms/:roomSlug" element={<RoomDetailPage />} />
+            <Route path="/rooms/:roomSlug" element={<RoomGroup />} />
           </Route>
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>

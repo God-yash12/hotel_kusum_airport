@@ -1,4 +1,8 @@
 import { Room, RoomType } from "@/types/RoomTypes";
+import DeluxeRoom1 from '@/assets/deluxe1.jpg';
+import DeluxeRoom2 from '@/assets/deluxe2.jpg';
+import DeluxeRoom3 from '@/assets/deluxe3.jpg';
+import DeluxeRoom4 from '@/assets/deluxe4.jpg';
 
 
 
@@ -13,10 +17,10 @@ export const roomsData: Record<RoomType, Room> = {
     description: 'Experience luxury in our spacious Deluxe Room featuring modern amenities, elegant decor, and stunning city views. Perfect for both business and leisure travelers.',
     shortDescription: 'Spacious room with modern amenities and city views',
     images: [
-      '/images/deluxe-1.jpg',
-      '/images/deluxe-2.jpg',
-      '/images/deluxe-3.jpg',
-      '/images/deluxe-4.jpg'
+      DeluxeRoom1,
+      DeluxeRoom2,
+      DeluxeRoom3,
+      DeluxeRoom4
     ],
     features: [
       'King size bed',
