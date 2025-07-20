@@ -27,8 +27,8 @@ export default function ModernBookingSystem() {
     // Check-in date state
     const [checkInOpen, setCheckInOpen] = useState(false);
     const [checkInValue, setCheckInValue] = useState(() => {
-            const today = new Date();
-            return formatDate(today)
+        const today = new Date();
+        return formatDate(today)
     });
     const [checkInDate, setCheckInDate] = useState<Date | undefined>(() => {
         const initialDate = parseDate('In 2 days');
@@ -49,7 +49,7 @@ export default function ModernBookingSystem() {
     const [checkOutDate, setCheckOutDate] = useState<Date | undefined>(() => {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 3);
-        return  tomorrow || undefined;
+        return tomorrow || undefined;
     });
     const [checkOutMonth, setCheckOutMonth] = useState(() => {
         const tomorrow = new Date();
@@ -78,6 +78,8 @@ export default function ModernBookingSystem() {
         }
     };
 
+    
+
     interface CheckInKeyDownEvent {
         key: string;
         preventDefault: () => void;
@@ -97,7 +99,7 @@ export default function ModernBookingSystem() {
         setCheckInOpen(false);
     };
 
-    // Check-out handlers
+    // Check-out handlersh
     interface CheckOutInputChangeEvent {
         target: {
             value: string;
@@ -190,7 +192,7 @@ export default function ModernBookingSystem() {
                                         onMonthChange={setCheckInMonth}
                                         onSelect={handleCheckInDateSelect}
                                         className="border-0 bg-gray-800 text-black rounded-md"
-                                       
+
                                     />
                                 </PopoverContent>
                             </Popover>
@@ -207,7 +209,7 @@ export default function ModernBookingSystem() {
                                 id="checkout-date"
                                 value={checkOutValue}
                                 placeholder="Tomorrow or next week"
-                                 className="bg-transparent border-0 border-b-2 border-amber-600 rounded-none px-1 py-2 focus:ring-0 focus:border-amber-700 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none transition-colors"
+                                className="bg-transparent border-0 border-b-2 border-amber-600 rounded-none px-1 py-2 focus:ring-0 focus:border-amber-700 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none transition-colors"
                                 onChange={handleCheckOutInputChange}
                                 onKeyDown={handleCheckOutKeyDown}
                             />
@@ -249,7 +251,7 @@ export default function ModernBookingSystem() {
                                             id="guests"
                                             value={guestText}
                                             readOnly
-                                             className="bg-transparent border-0 border-b-2 border-amber-600 rounded-none px-1 py-2 focus:ring-0 focus:border-amber-700 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none transition-colors"
+                                            className="bg-transparent border-0 border-b-2 border-amber-600 rounded-none px-1 py-2 focus:ring-0 focus:border-amber-700 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none transition-colors"
                                         />
                                         <Users className="absolute right-2 top-1/2 -translate-y-1/2 size-4 text-amber-600" />
                                     </div>
@@ -347,14 +349,14 @@ export default function ModernBookingSystem() {
                     </div>
 
                     {/* Book Now Button */}
-                     <div className={`transition-all duration-500 mt-3 `}>
-                              <Button
-                                asChild
-                                className={`sm:flex px-5 py-5  font-display font-medium text-white text-md text-center bg-[#C3A165] rounded-sm hover:rounded-4xl transition-all duration-300 hover:shadow-lg transform hover:scale-105 `}
-                              >
-                                <Link to="/booking">Find a Room</Link>
-                              </Button>
-                            </div>
+                    <div className={`transition-all duration-500 mt-3 `}>
+                        <Button
+                            asChild
+                            className={`sm:flex px-5 py-5  font-display font-medium text-white text-md text-center bg-[#C3A165] rounded-sm hover:rounded-4xl transition-all duration-300 hover:shadow-lg transform hover:scale-105 `}
+                        >
+                            <Link to="/booking">Find a Room</Link>
+                        </Button>
+                    </div>
                 </div>
             </div>
         </div>

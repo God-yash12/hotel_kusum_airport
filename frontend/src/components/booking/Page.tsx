@@ -1,5 +1,5 @@
 import { BookingHero } from "./BookingHero"
-import { BookingPage } from "./BookingPage"
+import  BookingPage  from "./BookingPage"
 
 
 
