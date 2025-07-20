@@ -51,8 +51,8 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Facilities", path: "/facilities" },
-    { name: "About Us", path: "/about" },
-    { name: "Contact", path: "/contact" }
+    { name: "Events", path: "/events" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const closeMobileMenu = () => {

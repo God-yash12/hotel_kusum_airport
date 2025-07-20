@@ -4,6 +4,7 @@ import { HomeGroup } from "./components/pages/HomeGroup"
 import { ContactPage } from "./components/contact/Page"
 import { Facilities } from "./components/facilities/page"
 import {RoomGroup}  from "./components/pages/rooms/Roomgroup.tsx"
+import { BookingGroup } from "./components/booking/Page.tsx"
 
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
             <Route path="/" element={<HomeGroup />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/facilities" element={<Facilities />} />
+            <Route path="/events" element={<div>Events Page</div>} />
+            <Route path="/booking" element={<BookingGroup />} />
             <Route path="/rooms/:roomSlug" element={<RoomGroup />} />
           </Route>
           <Route path="*" element={<div>404 Not Found</div>} />
