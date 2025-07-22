@@ -1,13 +1,14 @@
-# Use Node.js LTS version
 FROM node:22-alpine
 
-# Set working directory
+# Install netcat for connection testing
+RUN apk add --no-cache netcat-openbsd
+
 WORKDIR /usr/src/app
 
-# Copy package files first (for better caching)
+# Copy package files
 COPY package*.json ./
 
-# Install all dependencies (including dev dependencies for building)
+# Install dependencies
 RUN npm ci
 
 # Copy source code
@@ -19,5 +20,9 @@ RUN npm run build
 # Expose port
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "run", "start:prod"]
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD nc -z localhost 3000 || exit 1
+
+# Start the application in development mode with hot reload
+CMD ["npm", "run", "start:dev"]

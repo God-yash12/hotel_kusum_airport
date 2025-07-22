@@ -14,4 +14,11 @@ export const databaseConfig = async (ConfigService: ConfigService): Promise<Type
     autoLoadEntities: true,
     synchronize: true,
     logging: ConfigService.get<string>('NODE_ENV') !== 'production',
+    retryAttempts: 10,
+    retryDelay: 3000,
+    connectTimeout: 60000,
+    acquireTimeout: 60000,
+    extra: {
+        connectionLimit: 10,
+    },
 })
