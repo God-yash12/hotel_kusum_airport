@@ -1,34 +1,77 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+// src/controllers/room.controller.ts
+import { Controller, Get, Query, UseGuards, Param, Put, Body } from '@nestjs/common';
 import { RoomService } from './room.service';
-import { CreateRoomDto } from './dto/create-room.dto';
-import { UpdateRoomDto } from './dto/update-room.dto';
+import { CheckAvailabilityDto } from '../booking/dto/create-booking.dto';
+import { JwtAuthGuard } from '../guards//jwt-auth.guard';
+import { AdminGuard } from '../guards/admin.guard';
+import { UpdateRoomStatusDto } from '../user/dto/create-user.dto';
+import { RoomStatus } from './entities/room.entity';
 
-@Controller('room')
+@Controller('rooms')
 export class RoomController {
   constructor(private readonly roomService: RoomService) {}
 
-  @Post()
-  create(@Body() createRoomDto: CreateRoomDto) {
-    return this.roomService.create(createRoomDto);
+  // STAGE 1: Check availability (Public endpoint)
+  @Get('availability')
+  async checkAvailability(@Query() availabilityDto: CheckAvailabilityDto) {
+    return await this.roomService.checkAvailability(availabilityDto);
   }
 
-  @Get()
-  findAll() {
-    return this.roomService.findAll();
+  @Get('types')
+  async getRoomTypes() {
+    return {
+      roomTypes: [
+        {
+          type: 'deluxe',
+          name: 'Deluxe Room',
+          description: 'Comfortable room with modern amenities',
+          basePrice: 150
+        },
+        {
+          type: 'executive_suite',
+          name: 'Executive Suite', 
+          description: 'Spacious suite for business travelers',
+          basePrice: 250
+        },
+        {
+          type: 'standard_suite',
+          name: 'Standard Suite',
+          description: 'Perfect for families and longer stays',
+          basePrice: 200
+        },
+        {
+          type: 'premium_suite',
+          name: 'Premium Suite',
+          description: 'Luxury suite with premium amenities',
+          basePrice: 350
+        }
+      ]
+    };
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.roomService.findOne(+id);
+  // ADMIN ENDPOINTS
+  @UseGuards(JwtAuthGuard, AdminGuard)
+  @Get('admin/all')
+  async getAllRooms() {
+    return await this.roomService.getAllRoomsForAdmin();
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateRoomDto: UpdateRoomDto) {
-    return this.roomService.update(+id, updateRoomDto);
+  @UseGuards(JwtAuthGuard, AdminGuard)
+  @Get('admin/:id')
+  async getRoomDetails(@Param('id') roomId: number) {
+    return await this.roomService.getRoomWithCurrentBooking(roomId);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.roomService.remove(+id);
+  @UseGuards(JwtAuthGuard, AdminGuard)
+  @Put('admin/:id/status')
+  async updateRoomStatus(
+    @Param('id') roomId: number,
+    @Body() updateStatusDto: UpdateRoomStatusDto
+  ) {
+    return await this.roomService.updateRoomStatus(
+      roomId, 
+      updateStatusDto.status, 
+      updateStatusDto.adminNotes
+    );
   }
 }

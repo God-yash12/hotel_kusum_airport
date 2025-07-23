@@ -1,3 +1,4 @@
+
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Booking } from '../../booking/entities/booking.entity';
 
@@ -11,7 +12,7 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column()  
   fullName: string;
 
   @Column({ unique: true })
